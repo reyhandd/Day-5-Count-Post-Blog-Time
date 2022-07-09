@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Page</title>
+    <link rel="stylesheet" href="assets/css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html"><img src="assets/images/controller.png" alt="" style="width: 40px; display: flex; align-items: center;"></a>
+            <ul class="nav-des">
+                <li class="home">
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="">My project</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul class="nav-contact">
+                <li>
+                    <a href="contact-me.html">Contact Me</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<div class="container">
+    <div class="project-form">
+        <h1 class="header">ADD MY PROJECT</h1>
+
+        <form onsubmit="addBlog(event)">
+            <div class="form-tag">
+                <label for="Name">Project Name</label>
+                <input type="text" placeholder="Enter Project Name" id="name">
+            </div>
+
+            <div class="date-tag">
+                <div class="date-left">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" placeholder="" id="start-date">
+                </div>
+                <div class="date-right">
+                    <label for="end-date">End Date</label>
+                    <input type="date" placeholder="" id="end-date">
+                </div>
+            </div>
+
+            <div class="form-tag">
+                <label for="Message">Description </label>
+                <textarea name="" id="message" rows="10" placeholder=""></textarea >
+            </div>
+
+            <label for="tech" class="head">Technologies</label><br>
+            <div class="check-tag">
+                <div class="left-check">
+                    <input type="checkbox" id="nodejs" name="tech1">
+                    <label for="tech1">Node js</label><br>
+                    <input type="checkbox" id="reactjs" name="tech2">
+                    <label for="tech2">React js</label>
+                </div>
+                <div class="right-check">
+                    <input type="checkbox" id="momentjs" name="tech3">
+                    <label for="tech3">Moment js</label><br>
+                    <input type="checkbox" id="laravel" name="tech4">
+                    <label for="tech4">Laravel</label>
+                </div>
+            </div>
+
+            <div class="upload-form">
+                <label for="">Upload Image</label>
+                <input type="file" class="upload-box" id="upload">
+            </div>
+
+            <div class="btn-submit">
+                <button type="submit">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="container-blog">
+    <div class="content-blog">
+        <h1 class="heading">My Project</h1>
+        <hr>
+
+        <div id="project-blog" class="project-blog">
+            <!-- <div class="post">
+                <img src="assets/images/nft.jpg" alt="">
+                    <h3>DumbWays Mobile App</h3>
+                    <p class="duration">duration : </p>
+                    <div class="desc"><p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p></div>
+                    <div id="icon-tech" class="icon-tech">
+                        <i class="fa-brands fa-node-js" title="node.js"></i>
+                        <i class="fa-brands fa-react" title="react.js"></i>
+                        <i class="fa-regular fa-clock" title="moment.js"></i>
+                        <i class="fa-brands fa-laravel" title="laravel"></i>
+                    </div>
+                    <div class="btn-post">
+                        <button type="button" class="edit-btn">edit</button>
+                        <button type="button" class="delete-btn">delete</button>
+                    </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="assets/js/project.js"></script>
+</html>
