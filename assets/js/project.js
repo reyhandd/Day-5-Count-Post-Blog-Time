@@ -23,17 +23,27 @@ function addBlog(event) {
   // ---------------------------------------------------------------------------------
 
 
+  
+  let project = {
+    name,
+    duration: countDuration(new Date(startDate), new Date(endDate)),
+    message,
+    image,
+    technologies: filterChecboxChecked(),
+  }
+  
+  pushProject.push(project)
+  domInner()
+}
+
 // Checkbox
 function filterChecboxChecked() {
-  // querry all checkbox inputs
   const checkboxChecked = document.querySelectorAll(
     ".checkbox_group input[type='checkbox']:checked"
   );
 
-  // Array Container
   let cbValue = [];
 
-  // turn nodelist into array
   for (let i = 0; i < checkboxChecked.length; i++) {
     cbValue.push(checkboxChecked[i].value);
   }
@@ -43,23 +53,13 @@ function filterChecboxChecked() {
 
   // ----------------------------------------------------------------------------------------
 
-  let project = {
-    name,
-    duration: countDuration(new Date(startDate), new Date(endDate)),
-    message,
-    image,
-    technologies: filterChecboxChecked(),
-  };
-
-  pushProject.push(project)
-  domInner()
-}
-
 function domInner() {
+  console.log(pushProject)
+
   let content = document.getElementById("project-blog");
   content.innerHTML = "" 
 
-  for (i = 0; i < pushProject.length; i++) {
+  for (let i = 0; i < pushProject.length; i++) {
     const techs = pushProject[i].technologies;
     content.innerHTML += `
     <div class="post">
