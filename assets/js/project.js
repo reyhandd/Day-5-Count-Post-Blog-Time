@@ -24,14 +24,23 @@ function addBlog(event) {
 
 
 // Checkbox
-checkedValue = [];
-let technologyProject = document.getElementsByClassName('checkboxProject');
-let data = technologyProject.length
-for (var i = 0; i < data; i++) {
-    if (technologyProject[i].checked == true) {
-        checkedValue.push(technologyProject[i].value)
-    }
+function filterChecboxChecked() {
+  // querry all checkbox inputs
+  const checkboxChecked = document.querySelectorAll(
+    ".checkbox_group input[type='checkbox']:checked"
+  );
+
+  // Array Container
+  let cbValue = [];
+
+  // turn nodelist into array
+  for (let i = 0; i < checkboxChecked.length; i++) {
+    cbValue.push(checkboxChecked[i].value);
+  }
+
+  return cbValue;
 }
+
   // ----------------------------------------------------------------------------------------
 
   let project = {
@@ -39,7 +48,7 @@ for (var i = 0; i < data; i++) {
     duration: countDuration(new Date(startDate), new Date(endDate)),
     message,
     image,
-    checkedValue,
+    technologies: filterChecboxChecked(),
   };
 
   pushProject.push(project)
@@ -51,6 +60,7 @@ function domInner() {
   content.innerHTML = "" 
 
   for (i = 0; i < pushProject.length; i++) {
+    const techs = pushProject[i].technologies;
     content.innerHTML += `
     <div class="post">
                   <a href="project-main.html"><img src="${pushProject[i].image}" alt=""></a>
@@ -58,16 +68,10 @@ function domInner() {
                     <p class="duration">duration : ${pushProject[i].duration} month</p>
                     <div class="desc"><p>${pushProject[i].message}</p></div>
                     <div id="icon-tech" class="icon-tech">
-                      ${(function domInner() {
-                        let string = ""
-                        for (let j = 0; j < pushProject[i].checkedValue.length; j++) {
-                      
-                          string += `<div class="itemIcon">
-                          <i class="${pushProject[i].checkedValue[j]}"></i>
-                          </div> `
-                        }
-                        return string
-                      })()}
+                    ${techs[0] ? `<i class="fa-brands fa-${techs[0]}"></i>` : ""}
+                    ${techs[1] ? `<i class="fa-brands fa-${techs[1]}"></i>` : ""}
+                    ${techs[2] ? `<i class="fa-brands fa-${techs[2]}"></i>` : ""}
+                    ${techs[3] ? `<i class="fa-brands fa-${techs[3]}"></i>` : ""}
                     </div>
                     <div class="btn-post">
                         <a href="project-main.html"><button type="button" class="edit-btn">edit</button></a>
