@@ -10,6 +10,8 @@ body{
     width: 100%;
 }
 
+
+/* NAVBAR */
 nav{
     height: 8vh;
     background-color: whitesmoke;
@@ -68,7 +70,9 @@ nav .nav-des a:hover{
     transition: .3s;
     box-shadow: 0px 0px 30px rgb(99, 0, 198);
 }
+/* -------------------------------------------------------------- */
 
+/* CARDS */
 .cards{
     box-shadow: 0px 0px 30px rgb(119, 119, 119);
     padding: 60px 75px;
@@ -94,6 +98,8 @@ nav .nav-des a:hover{
 .main h2{
     margin-bottom: 12px;
     font-weight: 1000;
+    color: rgb(99, 0, 198);
+    text-shadow: 0px 0px 30px rgb(183, 111, 255);
 }
 .paragraf{
     margin-bottom: 30px;
@@ -144,7 +150,7 @@ nav .nav-des a:hover{
 .sosmed a{
     text-align: center;
     text-decoration: none;
-    color: #fff;
+    color: rgb(255, 255, 255);
     width: 30px;
     height: 30px;
     margin: 8px;

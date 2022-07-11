@@ -1,7 +1,5 @@
 let pushProject = []
 
-let iconGroup = document.getElementById("icon-tech")
-
 function addBlog(event) {
   event.preventDefault()
 
@@ -9,18 +7,39 @@ function addBlog(event) {
   let startDate = document.getElementById("start-date").value
   let endDate = document.getElementById("end-date").value
   let message = document.getElementById("message").value  
-  let image = document.getElementById("upload") 
-  let nodejs = document.getElementById('nodejs').checked  
-  let reactjs = document.getElementById('reactjs').checked  
-  let momentjs = document.getElementById('momentjs').checked  
-  let laravel = document.getElementById('laravel').checked  
-
+  let image = document.getElementById("upload")
+  
   image = URL.createObjectURL(image.files[0]);
+  
+  // Calendar
+  function countDuration(startDate, endDate) {
+    const result =
+      startDate.getMonth() -
+      endDate.getMonth() +
+      12 * (endDate.getFullYear() - startDate.getFullYear());
+  
+    return Math.abs(result);
+  }
+  // ---------------------------------------------------------------------------------
+
+
+// Checkbox
+checkedValue = [];
+let technologyProject = document.getElementsByClassName('checkboxProject');
+let data = technologyProject.length
+for (var i = 0; i < data; i++) {
+    if (technologyProject[i].checked == true) {
+        checkedValue.push(technologyProject[i].value)
+    }
+}
+  // ----------------------------------------------------------------------------------------
 
   let project = {
     name,
+    duration: countDuration(new Date(startDate), new Date(endDate)),
     message,
     image,
+    checkedValue,
   };
 
   pushProject.push(project)
@@ -29,23 +48,29 @@ function addBlog(event) {
 
 function domInner() {
   let content = document.getElementById("project-blog");
-  content.innerHTML = "" ;
+  content.innerHTML = "" 
 
   for (i = 0; i < pushProject.length; i++) {
     content.innerHTML += `
     <div class="post">
-                <img src="${pushProject[i].image}" alt="">
+                  <a href="project-main.html"><img src="${pushProject[i].image}" alt=""></a>
                     <h3>${pushProject[i].name}</h3>
-                    <p class="duration">duration : </p>
+                    <p class="duration">duration : ${pushProject[i].duration} month</p>
                     <div class="desc"><p>${pushProject[i].message}</p></div>
                     <div id="icon-tech" class="icon-tech">
-                        <i class="fa-brands fa-node-js" title="node.js"></i>
-                        <i class="fa-brands fa-react" title="react.js"></i>
-                        <i class="fa-regular fa-clock" title="moment.js"></i>
-                        <i class="fa-brands fa-laravel" title="laravel"></i>
+                      ${(function domInner() {
+                        let string = ""
+                        for (let j = 0; j < pushProject[i].checkedValue.length; j++) {
+                      
+                          string += `<div class="itemIcon">
+                          <i class="${pushProject[i].checkedValue[j]}"></i>
+                          </div> `
+                        }
+                        return string
+                      })()}
                     </div>
                     <div class="btn-post">
-                        <button type="button" class="edit-btn">edit</button>
+                        <a href="project-main.html"><button type="button" class="edit-btn">edit</button></a>
                         <button type="button" class="delete-btn">delete</button>
                     </div>
             </div>
